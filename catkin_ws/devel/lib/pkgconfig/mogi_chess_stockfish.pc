@@ -1,0 +1,8 @@
+prefix=/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/devel
+
+Name: mogi_chess_stockfish
+Description: Description of mogi_chess_stockfish
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

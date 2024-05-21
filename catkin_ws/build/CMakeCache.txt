@@ -409,6 +409,18 @@ actionlib_msgs_DIR:PATH=/opt/ros/noetic/share/actionlib_msgs/cmake
 //The directory containing a CMake configuration file for catkin.
 catkin_DIR:PATH=/opt/ros/noetic/share/catkin/cmake
 
+//Value Computed by CMake
+chess_moves_BINARY_DIR:STATIC=/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/build/chess_moves
+
+//Value Computed by CMake
+chess_moves_SOURCE_DIR:STATIC=/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/src/chess_moves
+
+//Value Computed by CMake
+chess_msgs_BINARY_DIR:STATIC=/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/build/chess_msgs
+
+//Value Computed by CMake
+chess_msgs_SOURCE_DIR:STATIC=/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/src/chess_msgs
+
 //The directory containing a CMake configuration file for cpp_common.
 cpp_common_DIR:PATH=/opt/ros/noetic/share/cpp_common/cmake
 
@@ -479,8 +491,23 @@ gtest_main_LIB_DEPENDS:STATIC=general;gtest;
 //Path to a library.
 lib:FILEPATH=/opt/ros/noetic/lib/libxmlrpcpp.so
 
+//The directory containing a CMake configuration file for message_generation.
+message_generation_DIR:PATH=/opt/ros/noetic/share/message_generation/cmake
+
 //The directory containing a CMake configuration file for message_runtime.
 message_runtime_DIR:PATH=/opt/ros/noetic/share/message_runtime/cmake
+
+//Value Computed by CMake
+mogi_chess_msgs_BINARY_DIR:STATIC=/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/build/chess_msgs
+
+//Value Computed by CMake
+mogi_chess_msgs_SOURCE_DIR:STATIC=/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/src/chess_msgs
+
+//Value Computed by CMake
+mogi_chess_stockfish_BINARY_DIR:STATIC=/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/build/chess_stockfish
+
+//Value Computed by CMake
+mogi_chess_stockfish_SOURCE_DIR:STATIC=/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/src/chess_stockfish
 
 //Value Computed by CMake
 ros_chess_BINARY_DIR:STATIC=/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/build/ros_chess
@@ -663,7 +690,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=5
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=6
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP

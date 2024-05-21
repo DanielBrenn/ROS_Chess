@@ -32,7 +32,7 @@
 
 
   <!-- PID setup -->
-  <rosparam file="$(find ros_chess)/controller/pid.yaml"/>
+  <!--<rosparam file="$(find ros_chess)/controller/pid.yaml"/>-->
 
 
   <!-- Send robot states to tf -->

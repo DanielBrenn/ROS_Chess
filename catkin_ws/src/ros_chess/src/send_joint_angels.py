@@ -1,14 +1,15 @@
 #!/usr/bin/env python3
 
 import rospy
-
 from trajectory_msgs.msg import JointTrajectory, JointTrajectoryPoint
+
+
 
 rospy.init_node('send_joint_angles')
 
 pub = rospy.Publisher('/arm_controller/command', JointTrajectory, queue_size=1)
 
-controller_name = "arm_controller"
+controller_name = "ikin_controller"
 joint_names = rospy.get_param("/%s/joints" % controller_name)
 
 rospy.loginfo("Joint names: %s" % joint_names)
@@ -31,3 +32,5 @@ while not rospy.is_shutdown():
     trajectory_command.header.stamp = rospy.Time.now()
     pub.publish(trajectory_command)
     rate.sleep()
+
+

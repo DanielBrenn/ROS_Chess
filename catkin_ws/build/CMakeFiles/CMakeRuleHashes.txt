@@ -1,2 +1,3 @@
 # Hashes of file build rules.
+6bf249c0d25592950d13c72627a552c8 /home/bd/Documents/GitHub/ROS_Chess/catkin_ws/devel/share/roseus/ros/chess_msgs/manifest.l
 94653a6bb257f521e647b8712b746cc7 CMakeFiles/clean_test_results

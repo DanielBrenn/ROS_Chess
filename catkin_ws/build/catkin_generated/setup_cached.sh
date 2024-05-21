@@ -7,5 +7,4 @@
 # new environment variables
 
 # modified environment variables
-export PWD='/home/bd/Documents/GitHub/ROS_Chess_funcitonTest/catkin_ws/build'
-export ROS_PACKAGE_PATH='/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/src:/home/bd/Documents/GitHub/ROS_Chess_funcitonTest/catkin_ws/src:/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/src:/home/bd/catkin_ws/src:/opt/ros/noetic/share'
+export PWD='/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/build'

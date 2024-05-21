@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+
+<launch>
+
+<node name="chess_moves" pkg="chess_moves" type="chess_manager.py" output ="screen">
+</node>
+
+</launch>
