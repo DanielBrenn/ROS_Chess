@@ -1,8 +1,6 @@
 # generated from genmsg/cmake/pkg-genmsg.cmake.em
 
-message(FATAL_ERROR "Could not find messages which '/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/src/chess_moves/srv/movementdata.srv' depends on. Did you forget to specify generate_messages(DEPENDENCIES ...)?
-Cannot locate message [int]: unknown package [chess_moves] on search path [{'actionlib_msgs': ['/opt/ros/noetic/share/actionlib_msgs/cmake/../msg'], 'std_msgs': ['/opt/ros/noetic/share/std_msgs/cmake/../msg']}]")
-message(STATUS "chess_moves: 0 messages, 3 services")
+message(STATUS "chess_moves: 0 messages, 1 services")
 
 set(MSG_I_FLAGS "-Iactionlib_msgs:/opt/ros/noetic/share/actionlib_msgs/cmake/../msg;-Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg")
 
@@ -19,14 +17,9 @@ add_custom_target(chess_moves_generate_messages ALL)
 
 
 
-get_filename_component(_filename "/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/src/chess_moves/srv/movementstatus.srv" NAME_WE)
+get_filename_component(_filename "/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/src/chess_moves/srv/movementdata.srv" NAME_WE)
 add_custom_target(_chess_moves_generate_messages_check_deps_${_filename}
-  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "chess_moves" "/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/src/chess_moves/srv/movementstatus.srv" ""
-)
-
-get_filename_component(_filename "/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/src/chess_moves/srv/movementtype.srv" NAME_WE)
-add_custom_target(_chess_moves_generate_messages_check_deps_${_filename}
-  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "chess_moves" "/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/src/chess_moves/srv/movementtype.srv" ""
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "chess_moves" "/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/src/chess_moves/srv/movementdata.srv" ""
 )
 
 #
@@ -38,13 +31,7 @@ add_custom_target(_chess_moves_generate_messages_check_deps_${_filename}
 
 ### Generating Services
 _generate_srv_cpp(chess_moves
-  "/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/src/chess_moves/srv/movementstatus.srv"
-  "${MSG_I_FLAGS}"
-  ""
-  ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/chess_moves
-)
-_generate_srv_cpp(chess_moves
-  "/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/src/chess_moves/srv/movementtype.srv"
+  "/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/src/chess_moves/srv/movementdata.srv"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/chess_moves
@@ -62,9 +49,7 @@ add_custom_target(chess_moves_generate_messages_cpp
 add_dependencies(chess_moves_generate_messages chess_moves_generate_messages_cpp)
 
 # add dependencies to all check dependencies targets
-get_filename_component(_filename "/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/src/chess_moves/srv/movementstatus.srv" NAME_WE)
-add_dependencies(chess_moves_generate_messages_cpp _chess_moves_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/src/chess_moves/srv/movementtype.srv" NAME_WE)
+get_filename_component(_filename "/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/src/chess_moves/srv/movementdata.srv" NAME_WE)
 add_dependencies(chess_moves_generate_messages_cpp _chess_moves_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
@@ -79,13 +64,7 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS chess_moves_generate_messages_cpp)
 
 ### Generating Services
 _generate_srv_eus(chess_moves
-  "/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/src/chess_moves/srv/movementstatus.srv"
-  "${MSG_I_FLAGS}"
-  ""
-  ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/chess_moves
-)
-_generate_srv_eus(chess_moves
-  "/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/src/chess_moves/srv/movementtype.srv"
+  "/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/src/chess_moves/srv/movementdata.srv"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/chess_moves
@@ -103,9 +82,7 @@ add_custom_target(chess_moves_generate_messages_eus
 add_dependencies(chess_moves_generate_messages chess_moves_generate_messages_eus)
 
 # add dependencies to all check dependencies targets
-get_filename_component(_filename "/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/src/chess_moves/srv/movementstatus.srv" NAME_WE)
-add_dependencies(chess_moves_generate_messages_eus _chess_moves_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/src/chess_moves/srv/movementtype.srv" NAME_WE)
+get_filename_component(_filename "/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/src/chess_moves/srv/movementdata.srv" NAME_WE)
 add_dependencies(chess_moves_generate_messages_eus _chess_moves_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
@@ -120,13 +97,7 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS chess_moves_generate_messages_eus)
 
 ### Generating Services
 _generate_srv_lisp(chess_moves
-  "/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/src/chess_moves/srv/movementstatus.srv"
-  "${MSG_I_FLAGS}"
-  ""
-  ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/chess_moves
-)
-_generate_srv_lisp(chess_moves
-  "/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/src/chess_moves/srv/movementtype.srv"
+  "/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/src/chess_moves/srv/movementdata.srv"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/chess_moves
@@ -144,9 +115,7 @@ add_custom_target(chess_moves_generate_messages_lisp
 add_dependencies(chess_moves_generate_messages chess_moves_generate_messages_lisp)
 
 # add dependencies to all check dependencies targets
-get_filename_component(_filename "/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/src/chess_moves/srv/movementstatus.srv" NAME_WE)
-add_dependencies(chess_moves_generate_messages_lisp _chess_moves_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/src/chess_moves/srv/movementtype.srv" NAME_WE)
+get_filename_component(_filename "/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/src/chess_moves/srv/movementdata.srv" NAME_WE)
 add_dependencies(chess_moves_generate_messages_lisp _chess_moves_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
@@ -161,13 +130,7 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS chess_moves_generate_messages_lisp)
 
 ### Generating Services
 _generate_srv_nodejs(chess_moves
-  "/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/src/chess_moves/srv/movementstatus.srv"
-  "${MSG_I_FLAGS}"
-  ""
-  ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/chess_moves
-)
-_generate_srv_nodejs(chess_moves
-  "/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/src/chess_moves/srv/movementtype.srv"
+  "/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/src/chess_moves/srv/movementdata.srv"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/chess_moves
@@ -185,9 +148,7 @@ add_custom_target(chess_moves_generate_messages_nodejs
 add_dependencies(chess_moves_generate_messages chess_moves_generate_messages_nodejs)
 
 # add dependencies to all check dependencies targets
-get_filename_component(_filename "/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/src/chess_moves/srv/movementstatus.srv" NAME_WE)
-add_dependencies(chess_moves_generate_messages_nodejs _chess_moves_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/src/chess_moves/srv/movementtype.srv" NAME_WE)
+get_filename_component(_filename "/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/src/chess_moves/srv/movementdata.srv" NAME_WE)
 add_dependencies(chess_moves_generate_messages_nodejs _chess_moves_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
@@ -202,13 +163,7 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS chess_moves_generate_messages_nodej
 
 ### Generating Services
 _generate_srv_py(chess_moves
-  "/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/src/chess_moves/srv/movementstatus.srv"
-  "${MSG_I_FLAGS}"
-  ""
-  ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/chess_moves
-)
-_generate_srv_py(chess_moves
-  "/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/src/chess_moves/srv/movementtype.srv"
+  "/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/src/chess_moves/srv/movementdata.srv"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/chess_moves
@@ -226,9 +181,7 @@ add_custom_target(chess_moves_generate_messages_py
 add_dependencies(chess_moves_generate_messages chess_moves_generate_messages_py)
 
 # add dependencies to all check dependencies targets
-get_filename_component(_filename "/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/src/chess_moves/srv/movementstatus.srv" NAME_WE)
-add_dependencies(chess_moves_generate_messages_py _chess_moves_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/src/chess_moves/srv/movementtype.srv" NAME_WE)
+get_filename_component(_filename "/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/src/chess_moves/srv/movementdata.srv" NAME_WE)
 add_dependencies(chess_moves_generate_messages_py _chess_moves_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
@@ -250,6 +203,9 @@ endif()
 if(TARGET actionlib_msgs_generate_messages_cpp)
   add_dependencies(chess_moves_generate_messages_cpp actionlib_msgs_generate_messages_cpp)
 endif()
+if(TARGET std_msgs_generate_messages_cpp)
+  add_dependencies(chess_moves_generate_messages_cpp std_msgs_generate_messages_cpp)
+endif()
 
 if(geneus_INSTALL_DIR AND EXISTS ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/chess_moves)
   # install generated code
@@ -260,6 +216,9 @@ if(geneus_INSTALL_DIR AND EXISTS ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/ch
 endif()
 if(TARGET actionlib_msgs_generate_messages_eus)
   add_dependencies(chess_moves_generate_messages_eus actionlib_msgs_generate_messages_eus)
+endif()
+if(TARGET std_msgs_generate_messages_eus)
+  add_dependencies(chess_moves_generate_messages_eus std_msgs_generate_messages_eus)
 endif()
 
 if(genlisp_INSTALL_DIR AND EXISTS ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/chess_moves)
@@ -272,6 +231,9 @@ endif()
 if(TARGET actionlib_msgs_generate_messages_lisp)
   add_dependencies(chess_moves_generate_messages_lisp actionlib_msgs_generate_messages_lisp)
 endif()
+if(TARGET std_msgs_generate_messages_lisp)
+  add_dependencies(chess_moves_generate_messages_lisp std_msgs_generate_messages_lisp)
+endif()
 
 if(gennodejs_INSTALL_DIR AND EXISTS ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/chess_moves)
   # install generated code
@@ -282,6 +244,9 @@ if(gennodejs_INSTALL_DIR AND EXISTS ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_D
 endif()
 if(TARGET actionlib_msgs_generate_messages_nodejs)
   add_dependencies(chess_moves_generate_messages_nodejs actionlib_msgs_generate_messages_nodejs)
+endif()
+if(TARGET std_msgs_generate_messages_nodejs)
+  add_dependencies(chess_moves_generate_messages_nodejs std_msgs_generate_messages_nodejs)
 endif()
 
 if(genpy_INSTALL_DIR AND EXISTS ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/chess_moves)
@@ -294,4 +259,7 @@ if(genpy_INSTALL_DIR AND EXISTS ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/ches
 endif()
 if(TARGET actionlib_msgs_generate_messages_py)
   add_dependencies(chess_moves_generate_messages_py actionlib_msgs_generate_messages_py)
+endif()
+if(TARGET std_msgs_generate_messages_py)
+  add_dependencies(chess_moves_generate_messages_py std_msgs_generate_messages_py)
 endif()

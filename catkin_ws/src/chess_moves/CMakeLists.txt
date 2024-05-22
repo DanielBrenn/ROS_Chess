@@ -61,8 +61,8 @@ find_package(catkin REQUIRED COMPONENTS
 add_service_files(
   FILES
   movementdata.srv
-  movementstatus.srv
-  movementtype.srv
+  #movementstatus.srv
+  #movementtype.srv
 )
 
 ## Generate actions in the 'action' folder
@@ -75,7 +75,8 @@ add_service_files(
 ## Generate added messages and services with any dependencies listed here
  generate_messages(
    DEPENDENCIES
-   actionlib_msgs#   std_msgs
+   actionlib_msgs
+   std_msgs
  )
 
 ################################################
@@ -108,10 +109,10 @@ add_service_files(
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
-#  INCLUDE_DIRS include
-#  LIBRARIES chess_moves
-#  CATKIN_DEPENDS actionlib actionlib_msgs roscpp rospy std_msgs
-#  DEPENDS system_lib
+  INCLUDE_DIRS include
+  LIBRARIES chess_moves
+  CATKIN_DEPENDS actionlib actionlib_msgs roscpp rospy std_msgs
+  DEPENDS system_lib
 )
 
 ###########

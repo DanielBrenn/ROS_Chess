@@ -6,6 +6,5 @@
 # testing this directory and lists subdirectories to be tested as well.
 subdirs("gtest")
 subdirs("chess_stockfish")
-subdirs("chess_msgs")
 subdirs("chess_moves")
 subdirs("ros_chess")

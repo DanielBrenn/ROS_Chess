@@ -2,7 +2,7 @@
 
 <launch>
 
-<node name="chess_moves" pkg="chess_moves" type="chess_manager.py" output ="screen">
+<node name="chess_manager" pkg="chess_moves" type="chess_manager.py" output ="screen">
 </node>
 
 </launch>

@@ -132,7 +132,6 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/build/gtest/cmake_install.cmake")
   include("/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/build/chess_stockfish/cmake_install.cmake")
-  include("/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/build/chess_msgs/cmake_install.cmake")
   include("/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/build/chess_moves/cmake_install.cmake")
   include("/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/build/ros_chess/cmake_install.cmake")
 

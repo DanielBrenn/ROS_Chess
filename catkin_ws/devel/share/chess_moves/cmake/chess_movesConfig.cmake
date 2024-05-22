@@ -91,9 +91,9 @@ endif()
 # flag project as catkin-based to distinguish if a find_package()-ed project is a catkin project
 set(chess_moves_FOUND_CATKIN_PROJECT TRUE)
 
-if(NOT " " STREQUAL " ")
+if(NOT "/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/devel/include;/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/src/chess_moves/include " STREQUAL " ")
   set(chess_moves_INCLUDE_DIRS "")
-  set(_include_dirs "")
+  set(_include_dirs "/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/devel/include;/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/src/chess_moves/include")
   if(NOT " " STREQUAL " ")
     set(_report "Check the issue tracker '' and consider creating a ticket if the problem has not been reported yet.")
   elseif(NOT " " STREQUAL " ")
@@ -116,7 +116,7 @@ if(NOT " " STREQUAL " ")
   endforeach()
 endif()
 
-set(libraries "")
+set(libraries "chess_moves")
 foreach(library ${libraries})
   # keep build configuration keywords, target names and absolute libraries as-is
   if("${library}" MATCHES "^(debug|optimized|general)$")
@@ -177,7 +177,7 @@ foreach(library ${libraries})
   endif()
 endforeach()
 
-set(chess_moves_EXPORTED_TARGETS "")
+set(chess_moves_EXPORTED_TARGETS "chess_moves_generate_messages_cpp;chess_moves_generate_messages_eus;chess_moves_generate_messages_lisp;chess_moves_generate_messages_nodejs;chess_moves_generate_messages_py")
 # create dummy targets for exported code generation targets to make life of users easier
 foreach(t ${chess_moves_EXPORTED_TARGETS})
   if(NOT TARGET ${t})
@@ -185,7 +185,7 @@ foreach(t ${chess_moves_EXPORTED_TARGETS})
   endif()
 endforeach()
 
-set(depends "")
+set(depends "actionlib;actionlib_msgs;roscpp;rospy;std_msgs")
 foreach(depend ${depends})
   string(REPLACE " " ";" depend_list ${depend})
   # the package name of the dependency must be kept in a unique variable so that it is not overwritten in recursive calls
@@ -214,7 +214,7 @@ foreach(depend ${depends})
   _list_append_deduplicate(chess_moves_EXPORTED_TARGETS ${${chess_moves_dep}_EXPORTED_TARGETS})
 endforeach()
 
-set(pkg_cfg_extras "")
+set(pkg_cfg_extras "chess_moves-msg-extras.cmake")
 foreach(extra ${pkg_cfg_extras})
   if(NOT IS_ABSOLUTE ${extra})
     set(extra ${chess_moves_DIR}/${extra})
