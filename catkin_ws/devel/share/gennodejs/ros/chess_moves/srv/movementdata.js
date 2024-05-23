@@ -22,7 +22,6 @@ class movementdataRequest {
     if (initObj === null) {
       // initObj === null is a special case for deserialization where we don't initialize fields
       this.capture = null;
-      this.capture_Place = null;
       this.next_Move = null;
     }
     else {
@@ -31,12 +30,6 @@ class movementdataRequest {
       }
       else {
         this.capture = false;
-      }
-      if (initObj.hasOwnProperty('capture_Place')) {
-        this.capture_Place = initObj.capture_Place
-      }
-      else {
-        this.capture_Place = '';
       }
       if (initObj.hasOwnProperty('next_Move')) {
         this.next_Move = initObj.next_Move
@@ -51,8 +44,6 @@ class movementdataRequest {
     // Serializes a message object of type movementdataRequest
     // Serialize message field [capture]
     bufferOffset = _serializer.bool(obj.capture, buffer, bufferOffset);
-    // Serialize message field [capture_Place]
-    bufferOffset = _serializer.string(obj.capture_Place, buffer, bufferOffset);
     // Serialize message field [next_Move]
     bufferOffset = _serializer.string(obj.next_Move, buffer, bufferOffset);
     return bufferOffset;
@@ -64,8 +55,6 @@ class movementdataRequest {
     let data = new movementdataRequest(null);
     // Deserialize message field [capture]
     data.capture = _deserializer.bool(buffer, bufferOffset);
-    // Deserialize message field [capture_Place]
-    data.capture_Place = _deserializer.string(buffer, bufferOffset);
     // Deserialize message field [next_Move]
     data.next_Move = _deserializer.string(buffer, bufferOffset);
     return data;
@@ -73,9 +62,8 @@ class movementdataRequest {
 
   static getMessageSize(object) {
     let length = 0;
-    length += _getByteLength(object.capture_Place);
     length += _getByteLength(object.next_Move);
-    return length + 9;
+    return length + 5;
   }
 
   static datatype() {
@@ -85,14 +73,13 @@ class movementdataRequest {
 
   static md5sum() {
     //Returns md5sum for a message object
-    return 'abcc476373374e9652f9f49a3c414afd';
+    return '4cd85a70bbf6cd984a90000cc83dfa07';
   }
 
   static messageDefinition() {
     // Returns full string definition for message
     return `
     bool capture
-    string capture_Place
     string next_Move
     
     `;
@@ -109,13 +96,6 @@ class movementdataRequest {
     }
     else {
       resolved.capture = false
-    }
-
-    if (msg.capture_Place !== undefined) {
-      resolved.capture_Place = msg.capture_Place;
-    }
-    else {
-      resolved.capture_Place = ''
     }
 
     if (msg.next_Move !== undefined) {
@@ -185,6 +165,6 @@ class movementdataResponse {
 module.exports = {
   Request: movementdataRequest,
   Response: movementdataResponse,
-  md5sum() { return 'abcc476373374e9652f9f49a3c414afd'; },
+  md5sum() { return '4cd85a70bbf6cd984a90000cc83dfa07'; },
   datatype() { return 'chess_moves/movementdata'; }
 };

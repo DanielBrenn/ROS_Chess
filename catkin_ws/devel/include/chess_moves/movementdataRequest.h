@@ -25,12 +25,10 @@ struct movementdataRequest_
 
   movementdataRequest_()
     : capture(false)
-    , capture_Place()
     , next_Move()  {
     }
   movementdataRequest_(const ContainerAllocator& _alloc)
     : capture(false)
-    , capture_Place(_alloc)
     , next_Move(_alloc)  {
   (void)_alloc;
     }
@@ -39,9 +37,6 @@ struct movementdataRequest_
 
    typedef uint8_t _capture_type;
   _capture_type capture;
-
-   typedef std::basic_string<char, std::char_traits<char>, typename std::allocator_traits<ContainerAllocator>::template rebind_alloc<char>> _capture_Place_type;
-  _capture_Place_type capture_Place;
 
    typedef std::basic_string<char, std::char_traits<char>, typename std::allocator_traits<ContainerAllocator>::template rebind_alloc<char>> _next_Move_type;
   _next_Move_type next_Move;
@@ -76,7 +71,6 @@ template<typename ContainerAllocator1, typename ContainerAllocator2>
 bool operator==(const ::chess_moves::movementdataRequest_<ContainerAllocator1> & lhs, const ::chess_moves::movementdataRequest_<ContainerAllocator2> & rhs)
 {
   return lhs.capture == rhs.capture &&
-    lhs.capture_Place == rhs.capture_Place &&
     lhs.next_Move == rhs.next_Move;
 }
 
@@ -134,12 +128,12 @@ struct MD5Sum< ::chess_moves::movementdataRequest_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "abcc476373374e9652f9f49a3c414afd";
+    return "4cd85a70bbf6cd984a90000cc83dfa07";
   }
 
   static const char* value(const ::chess_moves::movementdataRequest_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0xabcc476373374e96ULL;
-  static const uint64_t static_value2 = 0x52f9f49a3c414afdULL;
+  static const uint64_t static_value1 = 0x4cd85a70bbf6cd98ULL;
+  static const uint64_t static_value2 = 0x4a90000cc83dfa07ULL;
 };
 
 template<class ContainerAllocator>
@@ -159,7 +153,6 @@ struct Definition< ::chess_moves::movementdataRequest_<ContainerAllocator> >
   static const char* value()
   {
     return "bool capture\n"
-"string capture_Place\n"
 "string next_Move\n"
 ;
   }
@@ -180,7 +173,6 @@ namespace serialization
     template<typename Stream, typename T> inline static void allInOne(Stream& stream, T m)
     {
       stream.next(m.capture);
-      stream.next(m.capture_Place);
       stream.next(m.next_Move);
     }
 
@@ -202,8 +194,6 @@ struct Printer< ::chess_moves::movementdataRequest_<ContainerAllocator> >
   {
     s << indent << "capture: ";
     Printer<uint8_t>::stream(s, indent + "  ", v.capture);
-    s << indent << "capture_Place: ";
-    Printer<std::basic_string<char, std::char_traits<char>, typename std::allocator_traits<ContainerAllocator>::template rebind_alloc<char>>>::stream(s, indent + "  ", v.capture_Place);
     s << indent << "next_Move: ";
     Printer<std::basic_string<char, std::char_traits<char>, typename std::allocator_traits<ContainerAllocator>::template rebind_alloc<char>>>::stream(s, indent + "  ", v.next_Move);
   }

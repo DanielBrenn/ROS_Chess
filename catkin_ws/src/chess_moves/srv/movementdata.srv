@@ -1,4 +1,3 @@
 bool capture
-string capture_Place
 string next_Move
 ---

@@ -40,7 +40,7 @@ template<>
 struct MD5Sum< ::chess_moves::movementdata > {
   static const char* value()
   {
-    return "abcc476373374e9652f9f49a3c414afd";
+    return "4cd85a70bbf6cd984a90000cc83dfa07";
   }
 
   static const char* value(const ::chess_moves::movementdata&) { return value(); }

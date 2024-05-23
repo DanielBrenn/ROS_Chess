@@ -10,11 +10,11 @@ import sys
 import time
 from chess_moves.srv import *
 
-def next_move_service(c_flag,c_place,p_move):      #c_flag: capture flag c_place: capture place p_move: piece move E.g:(from 'e4'-->to 'e6') 
+def next_move_service(c_flag,p_move):      #c_flag: capture flag c_place: capture place p_move: piece move E.g:(from 'e4'-->to 'e6') 
     rospy.wait_for_service('robot_move_service')
     try:
         move_data = rospy.ServiceProxy('robot_move_service', movementdata)
-        resp1=move_data(capture=c_flag, capture_Place=c_place, next_Move=p_move)
+        resp1=move_data(capture=c_flag, next_Move=p_move)
         return resp1
     except rospy.ServiceException as e:
         print("Service call failed: %s"%e)
@@ -51,7 +51,7 @@ while end_game!=True:                 #oversimplified check mate detection the n
         if last_state==current_state:           #Check if it is a check mate
             end_game=False
         last_state=stockfish.get_fen_position()
-    next_move_service(capture_flag,next_move[2:4],next_move)
+    next_move_service(capture_flag,next_move)
 
 
 

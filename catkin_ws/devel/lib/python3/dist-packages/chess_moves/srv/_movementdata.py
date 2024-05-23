@@ -8,15 +8,14 @@ import struct
 
 
 class movementdataRequest(genpy.Message):
-  _md5sum = "abcc476373374e9652f9f49a3c414afd"
+  _md5sum = "4cd85a70bbf6cd984a90000cc83dfa07"
   _type = "chess_moves/movementdataRequest"
   _has_header = False  # flag to mark the presence of a Header object
   _full_text = """bool capture
-string capture_Place
 string next_Move
 """
-  __slots__ = ['capture','capture_Place','next_Move']
-  _slot_types = ['bool','string','string']
+  __slots__ = ['capture','next_Move']
+  _slot_types = ['bool','string']
 
   def __init__(self, *args, **kwds):
     """
@@ -26,7 +25,7 @@ string next_Move
     changes.  You cannot mix in-order arguments and keyword arguments.
 
     The available fields are:
-       capture,capture_Place,next_Move
+       capture,next_Move
 
     :param args: complete set of field values, in .msg order
     :param kwds: use keyword arguments corresponding to message field names
@@ -37,13 +36,10 @@ string next_Move
       # message fields cannot be None, assign default values for those that are
       if self.capture is None:
         self.capture = False
-      if self.capture_Place is None:
-        self.capture_Place = ''
       if self.next_Move is None:
         self.next_Move = ''
     else:
       self.capture = False
-      self.capture_Place = ''
       self.next_Move = ''
 
   def _get_types(self):
@@ -60,12 +56,6 @@ string next_Move
     try:
       _x = self.capture
       buff.write(_get_struct_B().pack(_x))
-      _x = self.capture_Place
-      length = len(_x)
-      if python3 or type(_x) == unicode:
-        _x = _x.encode('utf-8')
-        length = len(_x)
-      buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
       _x = self.next_Move
       length = len(_x)
       if python3 or type(_x) == unicode:
@@ -94,15 +84,6 @@ string next_Move
       start = end
       end += length
       if python3:
-        self.capture_Place = str[start:end].decode('utf-8', 'rosmsg')
-      else:
-        self.capture_Place = str[start:end]
-      start = end
-      end += 4
-      (length,) = _struct_I.unpack(str[start:end])
-      start = end
-      end += length
-      if python3:
         self.next_Move = str[start:end].decode('utf-8', 'rosmsg')
       else:
         self.next_Move = str[start:end]
@@ -120,12 +101,6 @@ string next_Move
     try:
       _x = self.capture
       buff.write(_get_struct_B().pack(_x))
-      _x = self.capture_Place
-      length = len(_x)
-      if python3 or type(_x) == unicode:
-        _x = _x.encode('utf-8')
-        length = len(_x)
-      buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
       _x = self.next_Move
       length = len(_x)
       if python3 or type(_x) == unicode:
@@ -149,15 +124,6 @@ string next_Move
       end += 1
       (self.capture,) = _get_struct_B().unpack(str[start:end])
       self.capture = bool(self.capture)
-      start = end
-      end += 4
-      (length,) = _struct_I.unpack(str[start:end])
-      start = end
-      end += length
-      if python3:
-        self.capture_Place = str[start:end].decode('utf-8', 'rosmsg')
-      else:
-        self.capture_Place = str[start:end]
       start = end
       end += 4
       (length,) = _struct_I.unpack(str[start:end])
@@ -277,6 +243,6 @@ def _get_struct_I():
     return _struct_I
 class movementdata(object):
   _type          = 'chess_moves/movementdata'
-  _md5sum = 'abcc476373374e9652f9f49a3c414afd'
+  _md5sum = '4cd85a70bbf6cd984a90000cc83dfa07'
   _request_class  = movementdataRequest
   _response_class = movementdataResponse

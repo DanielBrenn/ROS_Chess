@@ -12,11 +12,6 @@
     :initarg :capture
     :type cl:boolean
     :initform cl:nil)
-   (capture_Place
-    :reader capture_Place
-    :initarg :capture_Place
-    :type cl:string
-    :initform "")
    (next_Move
     :reader next_Move
     :initarg :next_Move
@@ -37,11 +32,6 @@
   (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader chess_moves-srv:capture-val is deprecated.  Use chess_moves-srv:capture instead.")
   (capture m))
 
-(cl:ensure-generic-function 'capture_Place-val :lambda-list '(m))
-(cl:defmethod capture_Place-val ((m <movementdata-request>))
-  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader chess_moves-srv:capture_Place-val is deprecated.  Use chess_moves-srv:capture_Place instead.")
-  (capture_Place m))
-
 (cl:ensure-generic-function 'next_Move-val :lambda-list '(m))
 (cl:defmethod next_Move-val ((m <movementdata-request>))
   (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader chess_moves-srv:next_Move-val is deprecated.  Use chess_moves-srv:next_Move instead.")
@@ -49,12 +39,6 @@
 (cl:defmethod roslisp-msg-protocol:serialize ((msg <movementdata-request>) ostream)
   "Serializes a message object of type '<movementdata-request>"
   (cl:write-byte (cl:ldb (cl:byte 8 0) (cl:if (cl:slot-value msg 'capture) 1 0)) ostream)
-  (cl:let ((__ros_str_len (cl:length (cl:slot-value msg 'capture_Place))))
-    (cl:write-byte (cl:ldb (cl:byte 8 0) __ros_str_len) ostream)
-    (cl:write-byte (cl:ldb (cl:byte 8 8) __ros_str_len) ostream)
-    (cl:write-byte (cl:ldb (cl:byte 8 16) __ros_str_len) ostream)
-    (cl:write-byte (cl:ldb (cl:byte 8 24) __ros_str_len) ostream))
-  (cl:map cl:nil #'(cl:lambda (c) (cl:write-byte (cl:char-code c) ostream)) (cl:slot-value msg 'capture_Place))
   (cl:let ((__ros_str_len (cl:length (cl:slot-value msg 'next_Move))))
     (cl:write-byte (cl:ldb (cl:byte 8 0) __ros_str_len) ostream)
     (cl:write-byte (cl:ldb (cl:byte 8 8) __ros_str_len) ostream)
@@ -65,14 +49,6 @@
 (cl:defmethod roslisp-msg-protocol:deserialize ((msg <movementdata-request>) istream)
   "Deserializes a message object of type '<movementdata-request>"
     (cl:setf (cl:slot-value msg 'capture) (cl:not (cl:zerop (cl:read-byte istream))))
-    (cl:let ((__ros_str_len 0))
-      (cl:setf (cl:ldb (cl:byte 8 0) __ros_str_len) (cl:read-byte istream))
-      (cl:setf (cl:ldb (cl:byte 8 8) __ros_str_len) (cl:read-byte istream))
-      (cl:setf (cl:ldb (cl:byte 8 16) __ros_str_len) (cl:read-byte istream))
-      (cl:setf (cl:ldb (cl:byte 8 24) __ros_str_len) (cl:read-byte istream))
-      (cl:setf (cl:slot-value msg 'capture_Place) (cl:make-string __ros_str_len))
-      (cl:dotimes (__ros_str_idx __ros_str_len msg)
-        (cl:setf (cl:char (cl:slot-value msg 'capture_Place) __ros_str_idx) (cl:code-char (cl:read-byte istream)))))
     (cl:let ((__ros_str_len 0))
       (cl:setf (cl:ldb (cl:byte 8 0) __ros_str_len) (cl:read-byte istream))
       (cl:setf (cl:ldb (cl:byte 8 8) __ros_str_len) (cl:read-byte istream))
@@ -91,27 +67,25 @@
   "chess_moves/movementdataRequest")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql '<movementdata-request>)))
   "Returns md5sum for a message object of type '<movementdata-request>"
-  "abcc476373374e9652f9f49a3c414afd")
+  "4cd85a70bbf6cd984a90000cc83dfa07")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql 'movementdata-request)))
   "Returns md5sum for a message object of type 'movementdata-request"
-  "abcc476373374e9652f9f49a3c414afd")
+  "4cd85a70bbf6cd984a90000cc83dfa07")
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql '<movementdata-request>)))
   "Returns full string definition for message of type '<movementdata-request>"
-  (cl:format cl:nil "bool capture~%string capture_Place~%string next_Move~%~%~%"))
+  (cl:format cl:nil "bool capture~%string next_Move~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql 'movementdata-request)))
   "Returns full string definition for message of type 'movementdata-request"
-  (cl:format cl:nil "bool capture~%string capture_Place~%string next_Move~%~%~%"))
+  (cl:format cl:nil "bool capture~%string next_Move~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:serialization-length ((msg <movementdata-request>))
   (cl:+ 0
      1
-     4 (cl:length (cl:slot-value msg 'capture_Place))
      4 (cl:length (cl:slot-value msg 'next_Move))
 ))
 (cl:defmethod roslisp-msg-protocol:ros-message-to-list ((msg <movementdata-request>))
   "Converts a ROS message object to a list"
   (cl:list 'movementdata-request
     (cl:cons ':capture (capture msg))
-    (cl:cons ':capture_Place (capture_Place msg))
     (cl:cons ':next_Move (next_Move msg))
 ))
 ;//! \htmlinclude movementdata-response.msg.html
@@ -142,10 +116,10 @@
   "chess_moves/movementdataResponse")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql '<movementdata-response>)))
   "Returns md5sum for a message object of type '<movementdata-response>"
-  "abcc476373374e9652f9f49a3c414afd")
+  "4cd85a70bbf6cd984a90000cc83dfa07")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql 'movementdata-response)))
   "Returns md5sum for a message object of type 'movementdata-response"
-  "abcc476373374e9652f9f49a3c414afd")
+  "4cd85a70bbf6cd984a90000cc83dfa07")
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql '<movementdata-response>)))
   "Returns full string definition for message of type '<movementdata-response>"
   (cl:format cl:nil "~%~%~%"))
