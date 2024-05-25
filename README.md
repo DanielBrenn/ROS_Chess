@@ -8,7 +8,7 @@
 # Futtatás
 1. ROS_Chess git projekten belül carkin_ws megnyitása terminálon belül ezt érdemes minden új terminál ablaknál megtenni. Git alapértelmezett beállítás esetén: 
 ```console
-cd ~/Documents/Github/ROS_Chess/catkin_ws
+cd ~/Documents/GitHub/ROS_Chess/catkin_ws
 ```
 2. Minden terminál ablakon belül be kell tölteni a projectet (ha valami nem működik akkor valószínűleg ennek a lépésnek a hiánya okozza):
 ```console
