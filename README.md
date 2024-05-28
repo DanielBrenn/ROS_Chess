@@ -140,8 +140,8 @@ Ezt követően a chess_robot.gazebo -ba behelyezzük a kameránknak a plug-in-j�
     </sensor>
   </gazebo>
 ```
-Inverz kinematika
-Az inverse_kinematics.py scriptben definiáljuk a robotkar csukókoordinátáinak számolását.
+# Inverz kinematika
+Az ```inverse_kinematics.py``` scriptben definiáljuk a robotkar csukókoordinátáinak számolását.
 import math
 from scipy.optimize import fsolve
 
