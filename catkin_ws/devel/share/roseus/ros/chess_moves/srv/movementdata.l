@@ -20,9 +20,36 @@
 
 (defclass chess_moves::movementdataRequest
   :super ros::object
-  :slots (_capture _next_Move ))
+  :slots ())
 
 (defmethod chess_moves::movementdataRequest
+  (:init
+   (&key
+    )
+   (send-super :init)
+   self)
+  (:serialization-length
+   ()
+   (+
+    0
+    ))
+  (:serialize
+   (&optional strm)
+   (let ((s (if strm strm
+              (make-string-output-stream (send self :serialization-length)))))
+     ;;
+     (if (null strm) (get-output-stream-string s))))
+  (:deserialize
+   (buf &optional (ptr- 0))
+   ;;
+   self)
+  )
+
+(defclass chess_moves::movementdataResponse
+  :super ros::object
+  :slots (_capture _next_Move ))
+
+(defmethod chess_moves::movementdataResponse
   (:init
    (&key
     ((:capture __capture) nil)
@@ -66,33 +93,6 @@
    self)
   )
 
-(defclass chess_moves::movementdataResponse
-  :super ros::object
-  :slots ())
-
-(defmethod chess_moves::movementdataResponse
-  (:init
-   (&key
-    )
-   (send-super :init)
-   self)
-  (:serialization-length
-   ()
-   (+
-    0
-    ))
-  (:serialize
-   (&optional strm)
-   (let ((s (if strm strm
-              (make-string-output-stream (send self :serialization-length)))))
-     ;;
-     (if (null strm) (get-output-stream-string s))))
-  (:deserialize
-   (buf &optional (ptr- 0))
-   ;;
-   self)
-  )
-
 (defclass chess_moves::movementdata
   :super ros::object
   :slots ())
@@ -108,19 +108,17 @@
 (setf (get chess_moves::movementdataRequest :md5sum-) "4cd85a70bbf6cd984a90000cc83dfa07")
 (setf (get chess_moves::movementdataRequest :datatype-) "chess_moves/movementdataRequest")
 (setf (get chess_moves::movementdataRequest :definition-)
-      "bool capture
+      "---
+bool capture
 string next_Move
----
-
 ")
 
 (setf (get chess_moves::movementdataResponse :md5sum-) "4cd85a70bbf6cd984a90000cc83dfa07")
 (setf (get chess_moves::movementdataResponse :datatype-) "chess_moves/movementdataResponse")
 (setf (get chess_moves::movementdataResponse :definition-)
-      "bool capture
+      "---
+bool capture
 string next_Move
----
-
 ")
 
 

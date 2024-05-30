@@ -3287,5 +3287,7 @@
       </link>
       <pose>0 0 1.1 0 -0 0</pose>
     </model>
+  <!-- A gazebo links attacher -->
+  <plugin name="ros_link_attacher_plugin" filename="libgazebo_ros_link_attacher.so"/>  
   </world>
 </sdf>

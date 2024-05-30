@@ -6,6 +6,8 @@ from trajectory_msgs.msg import JointTrajectory, JointTrajectoryPoint
 from scipy.optimize import fsolve
 from std_msgs.msg import String
 from chess_moves.srv import movementdataResponse, movementdata
+from gazebo_msgs.msg import ContactsState
+from gazebo_ros_link_attacher.srv import Attach, AttachRequest, AttachResponse
 
 #Ros service server for chess ai -----------------------------------------------------------------------------------------
 def response_state(req):
@@ -23,6 +25,53 @@ def robot_move_server():
     s =rospy.Service("robot_move_service", movementdata, response_state)
     return movementdata
 
+#Contact detection -----------------------------------------------------------------------------------xc--------------------
+def get_contacts (msg):
+    global tuched_model
+    
+    if (len(msg.states) == 0):
+        rospy.loginfo("No contacts were detected!")
+    else:
+        if 'left_finger' in msg.states[0].collision1_name:
+            tuched_model = msg.states[0].collision2_name.split("::")[0]
+        elif 'left_finger' in msg.states[0].collision2_name:
+            tuched_model = msg.states[0].collision2_name.split("::")[0]
+        else:
+            rospy.loginfo("Unknown collision")
+
+#Attach piece
+def attach_piece(model_name):
+    global sub_contacts 
+    #Contact detection 
+    sub_contacts = rospy.Subscriber ('/contact_vals', ContactsState, get_contacts)
+    attach_srv = rospy.ServiceProxy('/link_attacher_node/attach',Attach)
+    attach_srv.wait_for_service()
+
+    # Link them
+    req = AttachRequest()
+    req.model_name_1 = "chess_bot"
+    req.link_name_1 = "left_finger"
+    req.model_name_2 = model_name
+    req.link_name_2 = "link_0"
+    rospy.loginfo("Attach piece %s." % model_name)
+    attach_srv.call(req)
+
+#Detach piece
+def detach_piece(model_name):
+    global sub_contacts 
+
+    sub_contacts = rospy.Subscriber ('/contact_vals', ContactsState, get_contacts)
+    attach_srv = rospy.ServiceProxy('/link_attacher_node/detach',Attach)
+    attach_srv.wait_for_service()
+
+    # Link them
+    req = AttachRequest()
+    req.model_name_1 = "chess_bot"
+    req.link_name_1 = "left_finger"
+    req.model_name_2 = model_name
+    req.link_name_2 = "link_0"
+    rospy.loginfo("Detach piece %s." % model_name)
+    attach_srv.call(req)
 
 #Robot movement-----------------------------------------------------------------------------------------------------------
 def inverse_kinematics(coords, gripper_status):
@@ -73,8 +122,8 @@ def inverse_kinematics(coords, gripper_status):
         angles[5] = 0
         angles[6] = 0
     elif gripper_status == 'open':
-        angles[5] = 0.015
-        angles[6] = 0.015
+        angles[5] = 0.007
+        angles[6] = 0.007
 
     return angles
 
@@ -164,6 +213,8 @@ def chess_trajectory_control(capture, next_chess_move):
         #move down to grab the piece
         send_joint_state(inverse_kinematics(chess_move(to_pozitionXYZ),'close'))
         rospy.sleep(sleepTime)
+        #attach piece to arm
+        attach_piece(tuched_model)
         #move to free move space
         send_joint_state(inverse_kinematics(chess_move(to_move_space_place),'close'))
         rospy.sleep(sleepTime)
@@ -173,6 +224,9 @@ def chess_trajectory_control(capture, next_chess_move):
         #move to free move space
         send_joint_state(inverse_kinematics(chess_move([0,0.2,move_space_hight]),'open'))
         rospy.sleep(sleepTime)
+        #attach piece to arm
+        attach_piece(tuched_model)
+
     
     send_joint_state(inverse_kinematics(chess_move(from_move_space_place),'open'))
     rospy.sleep(sleepTime)
@@ -182,6 +236,8 @@ def chess_trajectory_control(capture, next_chess_move):
     #move down to grab the piece
     send_joint_state(inverse_kinematics(chess_move(from_pozitionXYZ),'close'))
     rospy.sleep(sleepTime)
+    #attach piece to arm
+    attach_piece(tuched_model)
     #move to free move space
     send_joint_state(inverse_kinematics(chess_move(from_move_space_place),'close'))
     rospy.sleep(sleepTime)
@@ -193,6 +249,8 @@ def chess_trajectory_control(capture, next_chess_move):
     rospy.sleep(sleepTime)
     send_joint_state(inverse_kinematics(chess_move(to_pozitionXYZ),'open'))
     rospy.sleep(sleepTime)
+    #detach piece to arm
+    detach_piece(tuched_model)
     send_joint_state(inverse_kinematics(chess_move(to_move_space_place),'open'))
     rospy.sleep(sleepTime)
     
@@ -204,9 +262,12 @@ def chess_trajectory_control(capture, next_chess_move):
     #5.lower to the table
     #6.let the piece go 
     #7.arm E (TCP) point moves to free move space
-
+tuched_model=''
 sleepTime=1.0
-rospy.init_node('send_joint_angles')
+rospy.init_node('trajectory_contact_controll')
+#Contat detect
+sub_contacts = rospy.Subscriber ('/contact_vals', ContactsState, get_contacts)
+#Joint controll
 pub = rospy.Publisher('/arm_controller/command', JointTrajectory, queue_size=1)
 controller_name = "arm_controller"
 joint_names = rospy.get_param("/%s/joints" % controller_name)
@@ -217,7 +278,6 @@ trajectory_command = JointTrajectory()
 trajectory_command.joint_names = joint_names
 point = JointTrajectoryPoint()
 
-#point.positions = inverse_kinematics(table_squares(next_move), "closed", gripper_angle=0)
 point.time_from_start = rospy.rostime.Duration(1,0)
 trajectory_command.points = [point]
 robot_move_server()

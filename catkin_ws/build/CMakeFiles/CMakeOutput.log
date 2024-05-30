@@ -489,3 +489,33 @@ make[1]: Leaving directory '/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/build/
 
 
 
+Performing C++ SOURCE FILE Test COMPILER_SUPPORTS_CXX11 succeeded with the following output:
+Change Dir: /home/bd/Documents/GitHub/ROS_Chess/catkin_ws/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_58d27/fast && /usr/bin/make -f CMakeFiles/cmTC_58d27.dir/build.make CMakeFiles/cmTC_58d27.dir/build
+make[1]: Entering directory '/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_58d27.dir/src.cxx.o
+/usr/bin/c++    -DCOMPILER_SUPPORTS_CXX11   -std=c++11 -o CMakeFiles/cmTC_58d27.dir/src.cxx.o -c /home/bd/Documents/GitHub/ROS_Chess/catkin_ws/build/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_58d27
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_58d27.dir/link.txt --verbose=1
+/usr/bin/c++   -DCOMPILER_SUPPORTS_CXX11    -rdynamic CMakeFiles/cmTC_58d27.dir/src.cxx.o  -o cmTC_58d27 
+make[1]: Leaving directory '/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test COMPILER_SUPPORTS_CXX0X succeeded with the following output:
+Change Dir: /home/bd/Documents/GitHub/ROS_Chess/catkin_ws/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_d2f51/fast && /usr/bin/make -f CMakeFiles/cmTC_d2f51.dir/build.make CMakeFiles/cmTC_d2f51.dir/build
+make[1]: Entering directory '/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_d2f51.dir/src.cxx.o
+/usr/bin/c++    -DCOMPILER_SUPPORTS_CXX0X   -std=c++0x -o CMakeFiles/cmTC_d2f51.dir/src.cxx.o -c /home/bd/Documents/GitHub/ROS_Chess/catkin_ws/build/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_d2f51
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d2f51.dir/link.txt --verbose=1
+/usr/bin/c++   -DCOMPILER_SUPPORTS_CXX0X    -rdynamic CMakeFiles/cmTC_d2f51.dir/src.cxx.o  -o cmTC_d2f51 
+make[1]: Leaving directory '/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }

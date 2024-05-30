@@ -134,6 +134,7 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   include("/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/build/chess_stockfish/cmake_install.cmake")
   include("/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/build/chess_moves/cmake_install.cmake")
   include("/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/build/ros_chess/cmake_install.cmake")
+  include("/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/build/gazebo_link_attacher_ws/src/gazebo_ros_link_attacher/cmake_install.cmake")
 
 endif()
 
