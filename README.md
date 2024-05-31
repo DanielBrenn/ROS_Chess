@@ -82,6 +82,10 @@ A Stockfish egy nyílt forráskódú sakkmotor, amely az egyik legerősebb sakk 
 
 # Beágyazott videó a robot működéséről
 
+... szipiszupi youtube vidi róla...
+
+# Konklúzió
+A sakkozó robot tervezése és megvalósítása összetett mérnöki feladat, amely több terület (robotika, képfeldolgozás, mesterséges intelligencia) integrációját igényli. A ROS alapú megközelítés lehetőséget biztosít a rendszer moduláris fejlesztésére és skálázhatóságára. A projekt végére a robotunk képes önállóan és megbízhatóan sakkozni, kielégítve a fenti követelményeket és mérnöki elvárásokat.
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -173,6 +177,3 @@ def inverse_kinematics(coords, gripper_status, gripper_angle=0):
         angles[6] = 0.015
 
     return angles
-
-# Konklúzió
-A sakkozó robot tervezése és megvalósítása összetett mérnöki feladat, amely több terület (robotika, képfeldolgozás, mesterséges intelligencia) integrációját igényli. A ROS alapú megközelítés lehetőséget biztosít a rendszer moduláris fejlesztésére és skálázhatóságára. A projekt végére a robotunk képes önállóan és megbízhatóan sakkozni, kielégítve a fenti követelményeket és mérnöki elvárásokat.
