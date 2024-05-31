@@ -1,8 +1,0 @@
-prefix=/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/devel
-
-Name: ROS_Chess
-Description: Description of ROS_Chess
-Version: 0.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 

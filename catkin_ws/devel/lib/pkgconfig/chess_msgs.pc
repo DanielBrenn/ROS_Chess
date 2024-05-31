@@ -1,8 +1,0 @@
-prefix=/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/devel
-
-Name: chess_msgs
-Description: Description of chess_msgs
-Version: 0.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 
