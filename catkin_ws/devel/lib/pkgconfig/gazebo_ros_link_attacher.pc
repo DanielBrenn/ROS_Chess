@@ -1,0 +1,8 @@
+prefix=/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/devel
+
+Name: gazebo_ros_link_attacher
+Description: Description of gazebo_ros_link_attacher
+Version: 0.0.0
+Cflags: -I/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/devel/include
+Libs: -L${prefix}/lib 
+Requires: message_runtime

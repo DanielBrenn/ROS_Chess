@@ -21,6 +21,58 @@ class movementdataRequest {
   constructor(initObj={}) {
     if (initObj === null) {
       // initObj === null is a special case for deserialization where we don't initialize fields
+    }
+    else {
+    }
+  }
+
+  static serialize(obj, buffer, bufferOffset) {
+    // Serializes a message object of type movementdataRequest
+    return bufferOffset;
+  }
+
+  static deserialize(buffer, bufferOffset=[0]) {
+    //deserializes a message object of type movementdataRequest
+    let len;
+    let data = new movementdataRequest(null);
+    return data;
+  }
+
+  static getMessageSize(object) {
+    return 0;
+  }
+
+  static datatype() {
+    // Returns string type for a service object
+    return 'chess_moves/movementdataRequest';
+  }
+
+  static md5sum() {
+    //Returns md5sum for a message object
+    return 'd41d8cd98f00b204e9800998ecf8427e';
+  }
+
+  static messageDefinition() {
+    // Returns full string definition for message
+    return `
+    
+    `;
+  }
+
+  static Resolve(msg) {
+    // deep-construct a valid message object instance of whatever was passed in
+    if (typeof msg !== 'object' || msg === null) {
+      msg = {};
+    }
+    const resolved = new movementdataRequest(null);
+    return resolved;
+    }
+};
+
+class movementdataResponse {
+  constructor(initObj={}) {
+    if (initObj === null) {
+      // initObj === null is a special case for deserialization where we don't initialize fields
       this.capture = null;
       this.next_Move = null;
     }
@@ -41,7 +93,7 @@ class movementdataRequest {
   }
 
   static serialize(obj, buffer, bufferOffset) {
-    // Serializes a message object of type movementdataRequest
+    // Serializes a message object of type movementdataResponse
     // Serialize message field [capture]
     bufferOffset = _serializer.bool(obj.capture, buffer, bufferOffset);
     // Serialize message field [next_Move]
@@ -50,9 +102,9 @@ class movementdataRequest {
   }
 
   static deserialize(buffer, bufferOffset=[0]) {
-    //deserializes a message object of type movementdataRequest
+    //deserializes a message object of type movementdataResponse
     let len;
-    let data = new movementdataRequest(null);
+    let data = new movementdataResponse(null);
     // Deserialize message field [capture]
     data.capture = _deserializer.bool(buffer, bufferOffset);
     // Deserialize message field [next_Move]
@@ -68,7 +120,7 @@ class movementdataRequest {
 
   static datatype() {
     // Returns string type for a service object
-    return 'chess_moves/movementdataRequest';
+    return 'chess_moves/movementdataResponse';
   }
 
   static md5sum() {
@@ -90,7 +142,7 @@ class movementdataRequest {
     if (typeof msg !== 'object' || msg === null) {
       msg = {};
     }
-    const resolved = new movementdataRequest(null);
+    const resolved = new movementdataResponse(null);
     if (msg.capture !== undefined) {
       resolved.capture = msg.capture;
     }
@@ -105,59 +157,6 @@ class movementdataRequest {
       resolved.next_Move = ''
     }
 
-    return resolved;
-    }
-};
-
-class movementdataResponse {
-  constructor(initObj={}) {
-    if (initObj === null) {
-      // initObj === null is a special case for deserialization where we don't initialize fields
-    }
-    else {
-    }
-  }
-
-  static serialize(obj, buffer, bufferOffset) {
-    // Serializes a message object of type movementdataResponse
-    return bufferOffset;
-  }
-
-  static deserialize(buffer, bufferOffset=[0]) {
-    //deserializes a message object of type movementdataResponse
-    let len;
-    let data = new movementdataResponse(null);
-    return data;
-  }
-
-  static getMessageSize(object) {
-    return 0;
-  }
-
-  static datatype() {
-    // Returns string type for a service object
-    return 'chess_moves/movementdataResponse';
-  }
-
-  static md5sum() {
-    //Returns md5sum for a message object
-    return 'd41d8cd98f00b204e9800998ecf8427e';
-  }
-
-  static messageDefinition() {
-    // Returns full string definition for message
-    return `
-    
-    
-    `;
-  }
-
-  static Resolve(msg) {
-    // deep-construct a valid message object instance of whatever was passed in
-    if (typeof msg !== 'object' || msg === null) {
-      msg = {};
-    }
-    const resolved = new movementdataResponse(null);
     return resolved;
     }
 };

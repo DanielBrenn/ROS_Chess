@@ -24,14 +24,22 @@ struct movementdataResponse_
   typedef movementdataResponse_<ContainerAllocator> Type;
 
   movementdataResponse_()
-    {
+    : capture(false)
+    , next_Move()  {
     }
   movementdataResponse_(const ContainerAllocator& _alloc)
-    {
+    : capture(false)
+    , next_Move(_alloc)  {
   (void)_alloc;
     }
 
 
+
+   typedef uint8_t _capture_type;
+  _capture_type capture;
+
+   typedef std::basic_string<char, std::char_traits<char>, typename std::allocator_traits<ContainerAllocator>::template rebind_alloc<char>> _next_Move_type;
+  _next_Move_type next_Move;
 
 
 
@@ -59,6 +67,20 @@ return s;
 }
 
 
+template<typename ContainerAllocator1, typename ContainerAllocator2>
+bool operator==(const ::chess_moves::movementdataResponse_<ContainerAllocator1> & lhs, const ::chess_moves::movementdataResponse_<ContainerAllocator2> & rhs)
+{
+  return lhs.capture == rhs.capture &&
+    lhs.next_Move == rhs.next_Move;
+}
+
+template<typename ContainerAllocator1, typename ContainerAllocator2>
+bool operator!=(const ::chess_moves::movementdataResponse_<ContainerAllocator1> & lhs, const ::chess_moves::movementdataResponse_<ContainerAllocator2> & rhs)
+{
+  return !(lhs == rhs);
+}
+
+
 } // namespace chess_moves
 
 namespace ros
@@ -82,12 +104,12 @@ struct IsMessage< ::chess_moves::movementdataResponse_<ContainerAllocator> const
 
 template <class ContainerAllocator>
 struct IsFixedSize< ::chess_moves::movementdataResponse_<ContainerAllocator> >
-  : TrueType
+  : FalseType
   { };
 
 template <class ContainerAllocator>
 struct IsFixedSize< ::chess_moves::movementdataResponse_<ContainerAllocator> const>
-  : TrueType
+  : FalseType
   { };
 
 template <class ContainerAllocator>
@@ -106,12 +128,12 @@ struct MD5Sum< ::chess_moves::movementdataResponse_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "d41d8cd98f00b204e9800998ecf8427e";
+    return "4cd85a70bbf6cd984a90000cc83dfa07";
   }
 
   static const char* value(const ::chess_moves::movementdataResponse_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0xd41d8cd98f00b204ULL;
-  static const uint64_t static_value2 = 0xe9800998ecf8427eULL;
+  static const uint64_t static_value1 = 0x4cd85a70bbf6cd98ULL;
+  static const uint64_t static_value2 = 0x4a90000cc83dfa07ULL;
 };
 
 template<class ContainerAllocator>
@@ -130,7 +152,8 @@ struct Definition< ::chess_moves::movementdataResponse_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "\n"
+    return "bool capture\n"
+"string next_Move\n"
 ;
   }
 
@@ -147,8 +170,11 @@ namespace serialization
 
   template<class ContainerAllocator> struct Serializer< ::chess_moves::movementdataResponse_<ContainerAllocator> >
   {
-    template<typename Stream, typename T> inline static void allInOne(Stream&, T)
-    {}
+    template<typename Stream, typename T> inline static void allInOne(Stream& stream, T m)
+    {
+      stream.next(m.capture);
+      stream.next(m.next_Move);
+    }
 
     ROS_DECLARE_ALLINONE_SERIALIZER
   }; // struct movementdataResponse_
@@ -164,8 +190,13 @@ namespace message_operations
 template<class ContainerAllocator>
 struct Printer< ::chess_moves::movementdataResponse_<ContainerAllocator> >
 {
-  template<typename Stream> static void stream(Stream&, const std::string&, const ::chess_moves::movementdataResponse_<ContainerAllocator>&)
-  {}
+  template<typename Stream> static void stream(Stream& s, const std::string& indent, const ::chess_moves::movementdataResponse_<ContainerAllocator>& v)
+  {
+    s << indent << "capture: ";
+    Printer<uint8_t>::stream(s, indent + "  ", v.capture);
+    s << indent << "next_Move: ";
+    Printer<std::basic_string<char, std::char_traits<char>, typename std::allocator_traits<ContainerAllocator>::template rebind_alloc<char>>>::stream(s, indent + "  ", v.next_Move);
+  }
 };
 
 } // namespace message_operations

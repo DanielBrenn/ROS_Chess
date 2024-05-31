@@ -489,3 +489,117 @@ make[1]: Leaving directory '/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/build/
 
 
 
+Performing C++ SOURCE FILE Test COMPILER_SUPPORTS_CXX11 succeeded with the following output:
+Change Dir: /home/bd/Documents/GitHub/ROS_Chess/catkin_ws/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_58d27/fast && /usr/bin/make -f CMakeFiles/cmTC_58d27.dir/build.make CMakeFiles/cmTC_58d27.dir/build
+make[1]: Entering directory '/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_58d27.dir/src.cxx.o
+/usr/bin/c++    -DCOMPILER_SUPPORTS_CXX11   -std=c++11 -o CMakeFiles/cmTC_58d27.dir/src.cxx.o -c /home/bd/Documents/GitHub/ROS_Chess/catkin_ws/build/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_58d27
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_58d27.dir/link.txt --verbose=1
+/usr/bin/c++   -DCOMPILER_SUPPORTS_CXX11    -rdynamic CMakeFiles/cmTC_58d27.dir/src.cxx.o  -o cmTC_58d27 
+make[1]: Leaving directory '/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test COMPILER_SUPPORTS_CXX0X succeeded with the following output:
+Change Dir: /home/bd/Documents/GitHub/ROS_Chess/catkin_ws/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_d2f51/fast && /usr/bin/make -f CMakeFiles/cmTC_d2f51.dir/build.make CMakeFiles/cmTC_d2f51.dir/build
+make[1]: Entering directory '/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_d2f51.dir/src.cxx.o
+/usr/bin/c++    -DCOMPILER_SUPPORTS_CXX0X   -std=c++0x -o CMakeFiles/cmTC_d2f51.dir/src.cxx.o -c /home/bd/Documents/GitHub/ROS_Chess/catkin_ws/build/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_d2f51
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d2f51.dir/link.txt --verbose=1
+/usr/bin/c++   -DCOMPILER_SUPPORTS_CXX0X    -rdynamic CMakeFiles/cmTC_d2f51.dir/src.cxx.o  -o cmTC_d2f51 
+make[1]: Leaving directory '/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Determining if the function XOpenDisplay exists in the /usr/lib/x86_64-linux-gnu/libX11.so;/usr/lib/x86_64-linux-gnu/libXext.so passed with the following output:
+Change Dir: /home/bd/Documents/GitHub/ROS_Chess/catkin_ws/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_d8c5b/fast && /usr/bin/make -f CMakeFiles/cmTC_d8c5b.dir/build.make CMakeFiles/cmTC_d8c5b.dir/build
+make[1]: Entering directory '/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_d8c5b.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -Wall -Wno-unused-result -Wno-unknown-pragmas -Wno-unused-variable -Wfatal-errors -fPIC  -DCHECK_FUNCTION_EXISTS=XOpenDisplay   -o CMakeFiles/cmTC_d8c5b.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.16/Modules/CheckFunctionExists.c
+Linking C executable cmTC_d8c5b
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d8c5b.dir/link.txt --verbose=1
+/usr/bin/cc -Wall -Wno-unused-result -Wno-unknown-pragmas -Wno-unused-variable -Wfatal-errors -fPIC  -DCHECK_FUNCTION_EXISTS=XOpenDisplay    -rdynamic CMakeFiles/cmTC_d8c5b.dir/CheckFunctionExists.c.o  -o cmTC_d8c5b  /usr/lib/x86_64-linux-gnu/libX11.so /usr/lib/x86_64-linux-gnu/libXext.so 
+make[1]: Leaving directory '/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/build/CMakeFiles/CMakeTmp'
+
+
+
+Determining if the function gethostbyname exists passed with the following output:
+Change Dir: /home/bd/Documents/GitHub/ROS_Chess/catkin_ws/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_e5404/fast && /usr/bin/make -f CMakeFiles/cmTC_e5404.dir/build.make CMakeFiles/cmTC_e5404.dir/build
+make[1]: Entering directory '/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_e5404.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -Wall -Wno-unused-result -Wno-unknown-pragmas -Wno-unused-variable -Wfatal-errors -fPIC  -DCHECK_FUNCTION_EXISTS=gethostbyname   -o CMakeFiles/cmTC_e5404.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.16/Modules/CheckFunctionExists.c
+Linking C executable cmTC_e5404
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e5404.dir/link.txt --verbose=1
+/usr/bin/cc -Wall -Wno-unused-result -Wno-unknown-pragmas -Wno-unused-variable -Wfatal-errors -fPIC  -DCHECK_FUNCTION_EXISTS=gethostbyname    CMakeFiles/cmTC_e5404.dir/CheckFunctionExists.c.o  -o cmTC_e5404 
+make[1]: Leaving directory '/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/build/CMakeFiles/CMakeTmp'
+
+
+
+Determining if the function connect exists passed with the following output:
+Change Dir: /home/bd/Documents/GitHub/ROS_Chess/catkin_ws/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_cdd7e/fast && /usr/bin/make -f CMakeFiles/cmTC_cdd7e.dir/build.make CMakeFiles/cmTC_cdd7e.dir/build
+make[1]: Entering directory '/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_cdd7e.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -Wall -Wno-unused-result -Wno-unknown-pragmas -Wno-unused-variable -Wfatal-errors -fPIC  -DCHECK_FUNCTION_EXISTS=connect   -o CMakeFiles/cmTC_cdd7e.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.16/Modules/CheckFunctionExists.c
+Linking C executable cmTC_cdd7e
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_cdd7e.dir/link.txt --verbose=1
+/usr/bin/cc -Wall -Wno-unused-result -Wno-unknown-pragmas -Wno-unused-variable -Wfatal-errors -fPIC  -DCHECK_FUNCTION_EXISTS=connect    CMakeFiles/cmTC_cdd7e.dir/CheckFunctionExists.c.o  -o cmTC_cdd7e 
+make[1]: Leaving directory '/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/build/CMakeFiles/CMakeTmp'
+
+
+
+Determining if the function remove exists passed with the following output:
+Change Dir: /home/bd/Documents/GitHub/ROS_Chess/catkin_ws/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_b1d2a/fast && /usr/bin/make -f CMakeFiles/cmTC_b1d2a.dir/build.make CMakeFiles/cmTC_b1d2a.dir/build
+make[1]: Entering directory '/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_b1d2a.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -Wall -Wno-unused-result -Wno-unknown-pragmas -Wno-unused-variable -Wfatal-errors -fPIC  -DCHECK_FUNCTION_EXISTS=remove   -o CMakeFiles/cmTC_b1d2a.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.16/Modules/CheckFunctionExists.c
+Linking C executable cmTC_b1d2a
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b1d2a.dir/link.txt --verbose=1
+/usr/bin/cc -Wall -Wno-unused-result -Wno-unknown-pragmas -Wno-unused-variable -Wfatal-errors -fPIC  -DCHECK_FUNCTION_EXISTS=remove    CMakeFiles/cmTC_b1d2a.dir/CheckFunctionExists.c.o  -o cmTC_b1d2a 
+make[1]: Leaving directory '/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/build/CMakeFiles/CMakeTmp'
+
+
+
+Determining if the function shmat exists passed with the following output:
+Change Dir: /home/bd/Documents/GitHub/ROS_Chess/catkin_ws/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_ecfad/fast && /usr/bin/make -f CMakeFiles/cmTC_ecfad.dir/build.make CMakeFiles/cmTC_ecfad.dir/build
+make[1]: Entering directory '/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_ecfad.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -Wall -Wno-unused-result -Wno-unknown-pragmas -Wno-unused-variable -Wfatal-errors -fPIC  -DCHECK_FUNCTION_EXISTS=shmat   -o CMakeFiles/cmTC_ecfad.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.16/Modules/CheckFunctionExists.c
+Linking C executable cmTC_ecfad
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ecfad.dir/link.txt --verbose=1
+/usr/bin/cc -Wall -Wno-unused-result -Wno-unknown-pragmas -Wno-unused-variable -Wfatal-errors -fPIC  -DCHECK_FUNCTION_EXISTS=shmat    CMakeFiles/cmTC_ecfad.dir/CheckFunctionExists.c.o  -o cmTC_ecfad 
+make[1]: Leaving directory '/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/build/CMakeFiles/CMakeTmp'
+
+
+
+Determining if the function IceConnectionNumber exists in the ICE passed with the following output:
+Change Dir: /home/bd/Documents/GitHub/ROS_Chess/catkin_ws/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_fdf61/fast && /usr/bin/make -f CMakeFiles/cmTC_fdf61.dir/build.make CMakeFiles/cmTC_fdf61.dir/build
+make[1]: Entering directory '/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_fdf61.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -Wall -Wno-unused-result -Wno-unknown-pragmas -Wno-unused-variable -Wfatal-errors -fPIC  -DCHECK_FUNCTION_EXISTS=IceConnectionNumber   -o CMakeFiles/cmTC_fdf61.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.16/Modules/CheckFunctionExists.c
+Linking C executable cmTC_fdf61
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_fdf61.dir/link.txt --verbose=1
+/usr/bin/cc -Wall -Wno-unused-result -Wno-unknown-pragmas -Wno-unused-variable -Wfatal-errors -fPIC  -DCHECK_FUNCTION_EXISTS=IceConnectionNumber    -rdynamic CMakeFiles/cmTC_fdf61.dir/CheckFunctionExists.c.o  -o cmTC_fdf61  -lICE 
+make[1]: Leaving directory '/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/build/CMakeFiles/CMakeTmp'
+
+
+
