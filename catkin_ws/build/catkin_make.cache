@@ -1,0 +1,2 @@
+chess_moves:chess_stockfish:darknet_ros:darknet_ros_msgs:gazebo_link_attacher_ws/src/gazebo_ros_link_attacher:ros_chess
+-DCATKIN_DEVEL_PREFIX=/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/install -G Unix Makefiles

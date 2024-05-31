@@ -1,0 +1,8 @@
+prefix=/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/devel
+
+Name: chess_moves
+Description: Description of chess_moves
+Version: 0.0.0
+Cflags: -I/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/devel/include -I/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/src/chess_moves/include
+Libs: -L${prefix}/lib -lchess_moves
+Requires: actionlib actionlib_msgs roscpp rospy std_msgs

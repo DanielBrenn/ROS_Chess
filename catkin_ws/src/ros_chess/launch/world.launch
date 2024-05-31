@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<launch>
+
+  <!-- Import model library to Gazebo from outside source-->
+  <env name="GAZEBO_MODEL_PATH" value="$(find ros_chess)/gazebo_models"/>
+
+
+  <!-- World File -->
+  <arg name="world_file" default="$(find ros_chess)/worlds/chess_world_new.world"/>
+  <arg name="extra_gazebo_args" default="--verbose"/>
+
+  <!-- Launch Gazebo World -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="use_sim_time" value="true"/>
+    <arg name="debug" value="false"/>
+    <arg name="gui" value="true" />
+    <arg name="world_name" value="$(arg world_file)"/>
+    <arg name="paused" value="true"/>
+    <arg name="extra_gazebo_args" value="$(arg extra_gazebo_args)"/>
+  </include>
+
+</launch>

@@ -1,0 +1,2 @@
+set(chess_msgs_MESSAGE_FILES "")
+set(chess_msgs_SERVICE_FILES "/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/src/chess_msgs/srv/movementdata.srv;/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/src/chess_msgs/srv/movementstatus.srv;/home/bd/Documents/GitHub/ROS_Chess/catkin_ws/src/chess_msgs/srv/movementtype.srv")

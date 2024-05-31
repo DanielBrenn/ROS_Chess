@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/bd/Documents/GitHub/ROS_Chess/catkin_ws/devel/setup.sh
