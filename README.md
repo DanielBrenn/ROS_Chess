@@ -1,9 +1,33 @@
 # ROS_Chess
-# Project állapot
-- Környezet
-- Robot szimuláció 
-- Robot kézivezérlő
-  
+
+# Bevezetés
+
+A projekt célja egy sakkozó robot tervezése és megvalósítása, amely képes önállóan játszani a sakkot akár egy emberi játékos ellen. A robotnak képesnek kell lennie a bábukat mozgatni, lépéseket szimulálni, és kamerarendszer segítségével felismerni a különböző sakkbábukat. A projekt során a Robot Operating System (ROS) keretrendszert használjuk a robot irányítására és az egyes alrendszerek integrációjára, a modellek és annak környezetének szimulációjához pedig a Gazebot.
+
+# Rendszerkövetelmények
+
+- Robotkar: Pontos és precíz mozgásra képes, legalább 6 szabadságfokú robotkar.
+- Kamera: Színes kamera a sakkbábuk és azok mozgás közben felismeréséhez.
+- Bábumozgatás: A robotkar képes legyen a sakktábla minden mezejére elérni és precízen megfogni, mozgatni a sakkbábukat.
+
+# Szükséges csomagok
+
+## A projektünkhöz szükséges volt az alábbi csomagok telepítése:
+
+- ros-noetic-desktop-full
+- python3-roslaunch
+- ros-noetic-rqt-multiplot
+- gazebo11
+- ros-noetic-hector-trajectory-server
+- joint-trajectory-controller
+- moveit
+- stockfish
+
+# Modellezés
+
+Modellezés során először megterveztük a robotkarunkat SolidEdge segítségével, utána konvertáltuk át a számunka szükséges SDF fájlokra. A sakktábla és sakkbábuk paraméterezése során Xacro fájlt használtuk. Végül a kameránkat (```camera_link```) először a robotunk Xacro fájlához adtuk, utána a hozzá tartozó plugint a Gazebo fájlban helyeztük el.
+
+...Kép a sakkozó modellről...
 
 # Futtatás
 1. ROS_Chess git projekten belül carkin_ws megnyitása terminálon belül ezt érdemes minden új terminál ablaknál megtenni. Git alapértelmezett beállítás esetén: 
@@ -23,6 +47,10 @@ roslaunch ros_chess spawn_robot.launch
 ```console
 rosrun rqt_joint_trajectory_controller rqt_joint_trajectory_controller
 ```
+3.3. Kamera YOLO indítása
+```console
+roslaunch darknet_ros darknet_ros.launch
+```
 4. Fontosabb egyéb program:
 4.1. PID hangoláshoz:
 ```console
@@ -33,113 +61,31 @@ rosrun rqt_reconfigure rqt_reconfigure
 rqt
 ```
 
-5. Stockfish sakkozó AI letöltése
-```console
-$ pip install stockfish
-```
-Majd
-```console
-$ sudo apt install stockfish
-```
+# Inverz kinematika
 
-# Kamera
-1. A kameránkat úgy helyeztük el, hogy az 1. csukló alatti ```Gripper_base_link``` részhez rögzítettük és felülről látja be a táblánkat, emiatt nem volt szükség több, különböző kamerára. Első lépésként a ```chess_robot.xacro``` fájlba helyeztük be a camera_link -et:
-```console
-<!-- Camera -->
-  <joint type="fixed" name="camera_joint">
-    <origin xyz="1.3 0 1.5" rpy="0 0.2 -3.14"/>
-    <child link="camera_link"/>
-    <parent link="base_link"/>
-    <axis xyz="0 1 0" />
-  </joint>
+Az inverz kinematika során meghatározzuk a robotkar egyes ízületeinek szögeit annak érdekében, hogy a robotkar végpontja (end-effector) elérjen egy kívánt pozíciót és orientációt. Ez különösen fontos volt a sakkozó robotunknál, ahol a robotkarnak pontosan kellett mozgatnia a sakkbábunkat a sakktáblán. A mozgást úgy oldottuk meg, hogy a robotunknak csak a ... részei vesznek részt a mozgásban.
 
-  <link name='camera_link'>
-    <pose>0 0 0 0 0 0</pose>
-    <inertial>
-      <mass value="0.1"/>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
-      <inertia
-          ixx="1e-6" ixy="0" ixz="0"
-          iyy="1e-6" iyz="0"
-          izz="1e-6"
-      />
-    </inertial>
+... megfogás detektáló kép...
 
-    <collision name='collision'>
-      <origin xyz="0 0 0" rpy="0 0 0"/> 
-      <geometry>
-        <box size=".05 .05 .05"/>
-      </geometry>
-    </collision>
+# Kamera bábufelismerő YOLO segítségével
 
-    <visual name='camera_link_visual'>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
-      <geometry>
-        <box size=".05 .05 .05"/>
-      </geometry>
-    </visual>
+A sakkbábuk felismeréséhez a YOLO (You Only Look Once) valós idejű objektum felismerő algoritmust használtuk, amelyet a Darknet keretrendszerben implementáltak. Ez az algoritmus hatékony és gyors objektumdetektálást tesz lehetővé, amely különösen alkalmas valós idejű alkalmazásokra, ami tökéletes a robot projektünkhöz. A képet rácsokra osztja feldolgozás során, ahol minden rács felelős az objektumok detektálásáért és lokalizálásáért.
 
-  </link>
+... sakkbábut fogó kép ....
+... YOLO ablakban a sakkbábu ...
 
-  <gazebo reference="camera_link">
-    <material>Gazebo/Blue</material>
-  </gazebo>
+# Sakkozó stockfish AI
 
-  <joint type="fixed" name="camera_optical_joint">
-    <origin xyz="0 0 0" rpy="-1.5707 0 -1.5707"/>
-    <child link="camera_link_optical"/>
-    <parent link="camera_link"/>
-  </joint>
+A Stockfish egy nyílt forráskódú sakkmotor, amely az egyik legerősebb sakk AI a világon. A rendszerünk lehetővé teszi, hogy a robotkar vezérelje a sakkbábukat a sakktáblán, miközben a Stockfish AI meghozza a játék döntéseit.
 
-  <link name="camera_link_optical">
-  </link>
-```
+... stockfish AI terminál képe ...
 
-Itt meghatároztuk, hogy a pozíciónk ``` <origin xyz="1.3 0 1.5" rpy="0 0.2 -3.14"/>``` legyen 
-Ezt követően a chess_robot.gazebo -ba behelyezzük a kameránknak a plug-in-ját, amivel tudunk szimulálni:
-```console
-<!-- Camera -->
-  <gazebo reference="camera_link">
-    <sensor type="camera" name="camera1">
-      <update_rate>30.0</update_rate>
-      <visualize>true</visualize>
-      <camera name="head">
-        <horizontal_fov>1.3962634</horizontal_fov>
-        <image>
-          <width>640</width>
-          <height>480</height>
-          <format>R8G8B8</format>
-        </image>
-        <clip>
-          <near>0.01</near>
-          <far>25.0</far>
-        </clip>
-        <noise>
-          <type>gaussian</type>
-          <!-- Noise is sampled independently per pixel on each frame.
-               That pixel's noise value is added to each of its color
-               channels, which at that point lie in the range [0,1]. -->
-          <mean>0.0</mean>
-          <stddev>0.007</stddev>
-        </noise>
-      </camera>
-      <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
-        <alwaysOn>true</alwaysOn>
-        <updateRate>0.0</updateRate>
-        <cameraName>head_camera</cameraName>
-        <imageTopicName>image_raw</imageTopicName>
-        <cameraInfoTopicName>camera_info</cameraInfoTopicName>
-        <frameName>camera_link_optical</frameName>
-        <hackBaseline>0.07</hackBaseline>
-        <distortionK1>0.0</distortionK1>
-        <distortionK2>0.0</distortionK2>
-        <distortionK3>0.0</distortionK3>
-        <distortionT1>0.0</distortionT1>
-        <distortionT2>0.0</distortionT2>
-      </plugin>
-    </sensor>
-  </gazebo>
-```
+# Beágyazott videó a robot működéséről
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
 # Inverz kinematika
 Az ```inverse_kinematics.py``` scriptben definiáljuk a robotkar csukókoordinátáinak számolását.
 import math
@@ -228,5 +174,5 @@ def inverse_kinematics(coords, gripper_status, gripper_angle=0):
 
     return angles
 
-
-
+# Konklúzió
+A sakkozó robot tervezése és megvalósítása összetett mérnöki feladat, amely több terület (robotika, képfeldolgozás, mesterséges intelligencia) integrációját igényli. A ROS alapú megközelítés lehetőséget biztosít a rendszer moduláris fejlesztésére és skálázhatóságára. A projekt végére a robotunk képes önállóan és megbízhatóan sakkozni, kielégítve a fenti követelményeket és mérnöki elvárásokat.
