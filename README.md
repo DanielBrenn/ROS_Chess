@@ -43,11 +43,15 @@ source devel/setup.bash
 ```console
 roslaunch ros_chess spawn_robot.launch
 ```
-3.2. Robot vezérlő indítása 
+3.2. Robot mozgás stockfish és gazebo kommunikációjának indítása
 ```console
-rosrun rqt_joint_trajectory_controller rqt_joint_trajectory_controller
+rosrun ros_chess send_joint_angles.py
 ```
-3.3. Kamera YOLO indítása
+3.3. Robot sakklépések küldese terminálra, játszma állapot visszajelzés
+```console
+roslaunch chess_moves chess_manager.launch
+```
+3.4. Kamera YOLO indítása
 ```console
 roslaunch darknet_ros darknet_ros.launch
 ```
