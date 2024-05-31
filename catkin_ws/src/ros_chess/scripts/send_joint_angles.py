@@ -24,21 +24,25 @@ def robot_move_client():
 
 #Contact detection ---------------------------------------------------------------------------------------------------------
 
-
-
-def get_contacts (msg):
-    global tuched_model
-    if(len(msg.states) != 0):
-        if 'left_finger' in msg.states[0].collision1_name:
-            tuched_model = msg.states[0].collision2_name.split("::")[0]
-            print("Tuched piece:%s." % tuched_model)
-        elif 'left_finger' in msg.states[0].collision2_name:
-            tuched_model = msg.states[0].collision1_name.split("::")[0]
-            print("Tuched piece:%s." % tuched_model)
-        else:
-            rospy.loginfo("Unknown collision")
-
+class contacts_subscriber:
     
+    def __init__(self):
+        self.tuched_model=""
+        self.sub_contacts = rospy.Subscriber ('/contact_vals', ContactsState, self.callback) 
+        print("Initializing the instance!")
+
+    def callback (self,msg):
+
+        if(len(msg.states) != 0):
+            if 'left_finger' in msg.states[0].collision1_name:
+                self.tuched_model = msg.states[0].collision2_name.split("::")[0]
+                print("Tuched piece:%s." % self.tuched_model)
+            elif 'left_finger' in msg.states[0].collision2_name:
+                self.tuched_model = msg.states[0].collision1_name.split("::")[0]
+                print("Tuched piece:%s." % self.tuched_model)
+            else:
+                rospy.loginfo("Unknown collision")
+
 
 #Attach piece
 def attach_piece(model_name):
@@ -181,6 +185,10 @@ def send_joint_state(position):
 
 rospy.init_node('trajectory_contact_controll')
 
+
+#Contacts detection
+contacts_sub = contacts_subscriber()
+
 pub = rospy.Publisher('/arm_controller/command', JointTrajectory, queue_size=1)
 controller_name = "arm_controller"
 joint_names = rospy.get_param("/%s/joints" % controller_name)
@@ -195,9 +203,10 @@ point = JointTrajectoryPoint()
 point.time_from_start = rospy.rostime.Duration(1,0)
 trajectory_command.points = [point]
 rospy.sleep(1)
-tuched_model="" #global variable from contat event hnadler
+
 sleepTime=1
-sub_contacts = rospy.Subscriber ('/contact_vals', ContactsState, get_contacts) #checks if a piece is tuched
+
+
 while not rospy.is_shutdown():
     
     capture, next_chess_move = robot_move_client() #Requests data form service server a writes to the capture, next_chess_move
@@ -226,10 +235,12 @@ while not rospy.is_shutdown():
         #move down to grab the piece
         send_joint_state(inverse_kinematics(chess_move(to_pozitionXYZ),'close'))
         #attach piece to arm
-        print(tuched_model)
-        rospy.sleep(sleepTime)
-        attach_piece(tuched_model)
-        rospy.sleep(sleepTime)
+        print("Attach:%s." % contacts_sub.tuched_model)
+        rospy.sleep(1.5)
+        attach_piece(contacts_sub.tuched_model)
+        rospy.sleep(0.2)
+        attach_piece(contacts_sub.tuched_model)
+        rospy.sleep(0.2)
         #move to free move space
         send_joint_state(inverse_kinematics(chess_move(to_move_space_place),'close'))
         rospy.sleep(sleepTime)
@@ -237,13 +248,13 @@ while not rospy.is_shutdown():
         send_joint_state(inverse_kinematics(chess_move([0,0.2,move_space_hight]),'close'))
         rospy.sleep(sleepTime)
         #detach piece from arm
-        detach_piece(tuched_model)
-        rospy.sleep(sleepTime)
+        print("Detach:%s." % contacts_sub.tuched_model)
+        rospy.sleep(0.2)
+        detach_piece(contacts_sub.tuched_model)
         #move to free move space
         send_joint_state(inverse_kinematics(chess_move([0,0.2,move_space_hight]),'open'))
         rospy.sleep(sleepTime)
-    tuched_model="hagymasaláta"    
-    
+    contacts_sub.tuched_model=""
     send_joint_state(inverse_kinematics(chess_move(from_move_space_place),'open'))
     rospy.sleep(sleepTime)
     #move down to grab the piece
@@ -252,10 +263,9 @@ while not rospy.is_shutdown():
     #move down to grab the piece
     send_joint_state(inverse_kinematics(chess_move(from_pozitionXYZ),'close'))
     #attach piece to arm
-    print("Attach:%s." % tuched_model)
+    print("Attach:%s." % contacts_sub.tuched_model)
     rospy.sleep(sleepTime)
-    attach_piece(tuched_model)
-    rospy.sleep(sleepTime)
+    attach_piece(contacts_sub.tuched_model)
     #move to free move space
     send_joint_state(inverse_kinematics(chess_move(from_move_space_place),'close'))
     rospy.sleep(sleepTime)
@@ -266,14 +276,13 @@ while not rospy.is_shutdown():
     send_joint_state(inverse_kinematics(chess_move(to_pozitionXYZ),'close'))
     #detach piece from arm
     rospy.sleep(sleepTime)
-    print("Detach:%s." % tuched_model)
-    detach_piece(tuched_model)
+    print("Detach:%s." % contacts_sub.tuched_model)
     rospy.sleep(sleepTime)
+    detach_piece(contacts_sub.tuched_model)
     #open fingers
     send_joint_state(inverse_kinematics(chess_move(to_pozitionXYZ),'open'))
     rospy.sleep(sleepTime)
     #move to free move space
     send_joint_state(inverse_kinematics(chess_move(to_move_space_place),'open'))
     rospy.sleep(sleepTime)
-    tuched_model="hagymasaláta"
-
+    contacts_sub.tuched_model=""

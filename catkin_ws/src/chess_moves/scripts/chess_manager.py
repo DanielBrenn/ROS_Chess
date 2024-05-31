@@ -11,6 +11,7 @@ from chess_moves.srv import  movementdataResponse, movementdata
 #Event handler
 def response_state(req):
     global current_state, end_game, capture_flag
+    capture_flag=False #reset flag state 
     if end_game!=True:                 #oversimplified check mate detection the new changed set is the same to the last move
         current_state=stockfish.get_fen_position()
         rospy.loginfo(stockfish.get_board_visual())
