@@ -27,7 +27,7 @@ A projekt célja egy sakkozó robot tervezése és megvalósítása, amely képe
 
 Modellezés során először megterveztük a robotkarunkat SolidEdge segítségével, utána konvertáltuk át a számunka szükséges SDF fájlokra. A sakktábla és sakkbábuk paraméterezése során Xacro fájlt használtuk. Végül a kameránkat (```camera_link```) először a robotunk Xacro fájlához adtuk, utána a hozzá tartozó plugint a Gazebo fájlban helyeztük el.
 
-...Kép a sakkozó modellről...
+![Modell képe](Modell.png)
 
 # Futtatás
 1. ROS_Chess git projekten belül carkin_ws megnyitása terminálon belül ezt érdemes minden új terminál ablaknál megtenni. Git alapértelmezett beállítás esetén: 
@@ -65,20 +65,20 @@ rqt
 
 Az inverz kinematika során meghatározzuk a robotkar egyes ízületeinek szögeit annak érdekében, hogy a robotkar végpontja (end-effector) elérjen egy kívánt pozíciót és orientációt. Ez különösen fontos volt a sakkozó robotunknál, ahol a robotkarnak pontosan kellett mozgatnia a sakkbábunkat a sakktáblán. A mozgást úgy oldottuk meg, hogy a robotunknak csak a ... részei vesznek részt a mozgásban.
 
-... megfogás detektáló kép...
+![Megfogás képe](megfogas.png)
 
 # Kamera bábufelismerő YOLO segítségével
 
 A sakkbábuk felismeréséhez a YOLO (You Only Look Once) valós idejű objektum felismerő algoritmust használtuk, amelyet a Darknet keretrendszerben implementáltak. Ez az algoritmus hatékony és gyors objektumdetektálást tesz lehetővé, amely különösen alkalmas valós idejű alkalmazásokra, ami tökéletes a robot projektünkhöz. A képet rácsokra osztja feldolgozás során, ahol minden rács felelős az objektumok detektálásáért és lokalizálásáért.
 
-... sakkbábut fogó kép ....
-... YOLO ablakban a sakkbábu ...
+![fogás képe](fogas.png)
+![Yolo ablak](Yolo.png)
 
 # Sakkozó stockfish AI
 
 A Stockfish egy nyílt forráskódú sakkmotor, amely az egyik legerősebb sakk AI a világon. A rendszerünk lehetővé teszi, hogy a robotkar vezérelje a sakkbábukat a sakktáblán, miközben a Stockfish AI meghozza a játék döntéseit.
 
-... stockfish AI terminál képe ...
+![Stockfish ablak](Stockfish.png)
 
 # Beágyazott videó a robot működéséről
 
