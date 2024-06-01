@@ -67,7 +67,7 @@ rqt
 
 # Inverz kinematika
 
-Az inverz kinematika során meghatározzuk a robotkar egyes ízületeinek szögeit annak érdekében, hogy a robotkar végpontja (end-effector) elérjen egy kívánt pozíciót és orientációt. Ez különösen fontos volt a sakkozó robotunknál, ahol a robotkarnak pontosan kellett mozgatnia a sakkbábunkat a sakktáblán. A mozgást úgy oldottuk meg, hogy a robotunknak csak a ... részei vesznek részt a mozgásban.
+Az inverz kinematika során meghatározzuk a robotkar egyes ízületeinek szögeit annak érdekében, hogy a robotkar végpontja (end-effector) elérjen egy kívánt pozíciót és orientációt. Ez különösen fontos volt a sakkozó robotunknál, ahol a robotkarnak pontosan kellett mozgatnia a sakkbábunkat a sakktáblán. A mozgást úgy oldottuk meg, hogy a robotunk az első kar kivételével vesz részt a mozgásban.
 
 ![Megfogás képe](megfogas.png)
 
