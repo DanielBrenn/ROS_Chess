@@ -25,7 +25,7 @@ A projekt célja egy sakkozó robot tervezése és megvalósítása, amely képe
 
 # Modellezés
 
-Modellezés során először megterveztük a robotkarunkat SolidEdge segítségével, utána konvertáltuk át a számunka szükséges SDF fájlokra. A sakktábla és sakkbábuk paraméterezése során Xacro fájlt használtuk. Végül a kameránkat (```camera_link```) először a robotunk Xacro fájlához adtuk, utána a hozzá tartozó plugint a Gazebo fájlban helyeztük el.
+Modellezés során először megterveztük a robotkarunkat Autodesk Inventor segítségével, utána konvertáltuk át a számunka szükséges DAE fájlokra. A sakktábla és sakkbábuk paraméterezése során Xacro fájlt használtuk. Végül a kameránkat (```camera_link```) először a robotunk Xacro fájlához adtuk, utána a hozzá tartozó plugint a Gazebo fájlban helyeztük el.
 
 ![Modell képe](Modell.png)
 
